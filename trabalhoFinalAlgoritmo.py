@@ -11,32 +11,48 @@ class Ccliente:
     saldo = 0
     credito = 0  
 
-def lerCliente():
+def lerCliente(x):
     cli = Ccliente()  
     cli.nome=input("Nome:")
     cli.sobrenome=input("Sobrenome:")
-    cli.cpf=int(input("CPF:"))
+    cli.cpf=verificaCpf()
     cli.email=input("E-mail:")
     cli.endereco=input("Endereco:")
     cli.telefone=int(input("Telefone:"))
     cli.numConta=int(input("Número da conta:"))
     cli.saldo=float(input("Saldo:"))
-    vetClientes.append(cli) 
-
-def listarClientes(x):
-    for i in vetClientes:
-        print("Nome:",i.nome,"",i.sobrenome)
-        print("CPF:",i.cpf)
-        print("E-mail",i.email)
-        print("Endereço:",i.endereco)
-        print("Telefone:",i.telefone)
-        print("Número da conta corrente: ",i.numConta)
-        print("Limite de crédito:",i.credito,"R$")
-        print("Saldo:",i.saldo,"R$")
-        print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-        
+    x.append(cli)
     
 
-lerCliente()
-lerCliente()
-listarClientes(vetClientes)        
+def listarClientes(x):
+    for i in range(len(x)):
+        print("id:",i)
+        print("Nome:",vetClientes[i].nome,"",vetClientes[i].sobrenome)
+        print("CPF:",vetClientes[i].cpf)
+        print("E-mail",vetClientes[i].email)
+        print("Endereço:",vetClientes[i].endereco)
+        print("Telefone:",vetClientes[i].telefone)
+        print("Número da conta corrente: ",vetClientes[i].numConta)
+        print("Limite de crédito:",vetClientes[i].credito,"R$")
+        print("Saldo:",vetClientes[i].saldo,"R$")
+        print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
+
+def verificaCpf():
+    ok=True
+    while ok: 
+        cpf=int(input("CPF:"))   
+        for i in range(len(vetClientes)):
+            print(i)
+            if cpf == vetClientes[i].cpf:
+                print("CPF já cadastrado!")
+            else:
+                ok=False 
+                return cpf
+
+                           
+
+lerCliente(vetClientes)
+sja=verificaCpf()
+print(sja)
+
+      
